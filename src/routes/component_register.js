@@ -1,6 +1,6 @@
 import { create as createSubject } from '@liquid-bricks/lib-nats-subject/create/basic'
 import { events as natsEvents } from '@liquid-bricks/lib-nats-subject/events/nats'
-import { Codes } from '../../codes.js'
+import { PRECONDITION_REQUIRED } from '@liquid-bricks/lib-diagnostics/codes'
 
 
 export const path = createSubject(natsEvents['*'].component_service['*']['*'].cmd.component.register.v1['*'])
@@ -27,14 +27,14 @@ function validateComponentRegistration({ message, rootCtx: { connectionRegistry,
 
   diagnostics.require(
     connection,
-    Codes.PRECONDITION_REQUIRED,
+    PRECONDITION_REQUIRED,
     'Connection missing for component registration',
     { agentID }
   )
 
   diagnostics.require(
     hash,
-    Codes.PRECONDITION_REQUIRED,
+    PRECONDITION_REQUIRED,
     'Component hash is required for registration',
     { agentID }
   )

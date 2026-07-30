@@ -1,7 +1,7 @@
 import router from "@liquid-bricks/lib-nats-subject/router";
+import { PRECONDITION_INVALID } from '@liquid-bricks/lib-diagnostics/codes'
 import { path as componentRegisterPath, spec as componentRegisterSpec } from './routes/component_register.js'
 import { path as computeResultDonePath, spec as computeResultDoneSpec } from './routes/computeResultDone.js'
-import { Codes } from '../codes.js'
 
 export const routes = [
   [componentRegisterPath, componentRegisterSpec],
@@ -20,11 +20,11 @@ export function createWebSocketIngressRouter({
     .route({}, { children: routes })
     .default({
       handler: ({ message, rootCtx: { diagnostics } }) => {
-        diagnostics.warn(false, Codes.PRECONDITION_INVALID, 'No handler for subject', { subject: message?.subject })
+        diagnostics.warn(false, PRECONDITION_INVALID, 'No handler for subject', { subject: message?.subject })
       }
     })
     .error(({ error, message, rootCtx: { diagnostics } }) => {
-      diagnostics.warn(false, Codes.PRECONDITION_INVALID, 'gw-ws-components router error', { error, subject: message?.subject })
+      diagnostics.warn(false, PRECONDITION_INVALID, 'gw-ws-components router error', { error, subject: message?.subject })
       return { status: 'errored' }
     })
     .abort(({ message, rootCtx: { diagnostics } }) => {
