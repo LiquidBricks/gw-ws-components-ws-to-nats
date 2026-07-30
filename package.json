@@ -1,0 +1,23 @@
+{
+  "name": "@liquid-bricks/gw-ws-components-ws-to-nats",
+  "version": "1.0.0",
+  "description": "Routes gateway WebSocket ingress messages to NATS",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./router": "./src/index.js"
+  },
+  "files": [
+    "codes.js",
+    "src"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "test": "node --test \"test/**/*.mjs\""
+  },
+  "dependencies": {
+    "@liquid-bricks/lib-nats-subject": "github:LiquidBricks/lib-nats-subject#c79bce410616813500814e598afeeaea5ebe3216"
+  },
+  "license": "ISC"
+}
