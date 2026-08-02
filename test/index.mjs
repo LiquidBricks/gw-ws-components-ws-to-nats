@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 
-import { spec as componentRegisterSpec } from '../src/routes/component_register.js'
+import { spec as componentRegisterSpec } from '../src/routes/component_register/index.js'
 import { spec as computeResultSpec } from '../src/routes/computeResultDone.js'
 
 function createDiagnosticsStub() {
