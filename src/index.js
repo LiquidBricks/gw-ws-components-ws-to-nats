@@ -1,11 +1,13 @@
 import router from "@liquid-bricks/lib-nats-subject/router";
 import { PRECONDITION_INVALID } from '@liquid-bricks/lib-diagnostics/codes'
 import { path as componentRegisterPath, spec as componentRegisterSpec } from './routes/component_register/index.js'
+import { path as computeConsoleEventPath, spec as computeConsoleEventSpec } from './routes/computeConsoleEvent.js'
 import { path as computeResultDonePath, spec as computeResultDoneSpec } from './routes/computeResultDone.js'
 import { path as computeResultFailedPath, spec as computeResultFailedSpec } from './routes/computeResultFailed.js'
 
 export const routes = [
   [componentRegisterPath, componentRegisterSpec],
+  [computeConsoleEventPath, computeConsoleEventSpec],
   [computeResultDonePath, computeResultDoneSpec],
   [computeResultFailedPath, computeResultFailedSpec],
 ]
